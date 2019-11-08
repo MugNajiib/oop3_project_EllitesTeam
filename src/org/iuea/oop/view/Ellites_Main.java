@@ -206,6 +206,67 @@ public class Ellites_Main {
 		btnDelete.setFont(new Font("SansSerif", Font.BOLD, 14));
 		btnDelete.setBackground(SystemColor.textHighlight);
 		students.add(btnDelete);
+
+		//////////
+
+		String[] columns = {"First Name","Last Name","Sex","Registration","Course"};
+				
+				String [][] rows= {{"Mugalaasi","Najib","Male","18/UG/496","BSSE"},
+						{"Mirembe","Carolyne","Female","18/UG/467","BIT-S"},
+						{"Ingabire","Rachael","Female","18/UG/899","BIT-S"},
+						{"Rugendabanga","Mireille","Female","18/UG/879","BIT-S"},
+						{"Mugabi Mark","Marvin","Male","18/UG/BCS"},
+						{"Abdraziz","Farah Ali","Male","18/1190/BSSE-S"}};
+				
+		DefaultTableModel tabulate = new DefaultTableModel(rows,columns); 
+		JTable table = new JTable(tabulate);
+		table.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		table.setRowHeight(20);
+		table.getTableHeader().setPreferredSize(new Dimension(0, 30));
+		((DefaultTableCellRenderer)table.getTableHeader().getDefaultRenderer())
+	    .setHorizontalAlignment(JLabel.CENTER);
+		
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(18, 85, 541, 200);
+		students.add(scrollPane);
+		scrollPane.setViewportView(table);
+		
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				DefaultTableModel model=(DefaultTableModel) table.getModel();
+				if(table.getSelectedRow()==-1) {
+					if(table.getRowCount()==0) {
+						JOptionPane.showMessageDialog(null, "No Data");
+					} else {
+						JOptionPane.showMessageDialog(null, "Select Row to Delete");
+					}
+				} else {
+					model.removeRow(table.getSelectedRow());
+				}
+			}
+		});
+		btnEdit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(table.getSelectedRow()==-1) {
+					if(table.getRowCount()==0) {
+						JOptionPane.showMessageDialog(null, "No Data");
+					} else {
+						JOptionPane.showMessageDialog(null, "Select Row to Edit");
+					}
+				} else {
+					int row = table.getSelectedRow();
+					firstname.setText((String)table.getValueAt(row, 0));
+					lastname.setText((String) table.getValueAt(row, 1));
+					gender.setSelectedItem((String)table.getValueAt(row, 2));
+					reg.setText((String) table.getValueAt(row, 3));
+					course.setText((String) table.getValueAt(row, 4));
+					btnUpdate.setVisible(true);
+					btnSubmit.setVisible(false);
+					students.setVisible(false);
+					regPane.setVisible(true);
+				}
+			}
+		});
 		
             //////////////
 		JMenuBar menuBar = new JMenuBar();
