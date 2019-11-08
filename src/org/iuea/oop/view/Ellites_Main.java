@@ -69,7 +69,7 @@ public class Ellites_Main {
 		mainPane.setBounds(109, 13, 581, 413);
 		
 		mainPane.setLayout(null);
-		
+		/////////////////////Carol upwards
 		pageLoad();
 		
 		 
@@ -175,9 +175,7 @@ public class Ellites_Main {
 		students.setLayout(null);
 		students.setBounds(1, 1, 578, 350);
 		mainPane.add(students);
-
-		////////////////
-
+		
 		btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -206,10 +204,8 @@ public class Ellites_Main {
 		btnDelete.setFont(new Font("SansSerif", Font.BOLD, 14));
 		btnDelete.setBackground(SystemColor.textHighlight);
 		students.add(btnDelete);
-
-		//////////
-
-		String[] columns = {"First Name","Last Name","Sex","Registration","Course"};
+		
+				String[] columns = {"First Name","Last Name","Sex","Registration","Course"};
 				
 				String [][] rows= {{"Mugalaasi","Najib","Male","18/UG/496","BSSE"},
 						{"Mirembe","Carolyne","Female","18/UG/467","BIT-S"},
@@ -266,9 +262,7 @@ public class Ellites_Main {
 					regPane.setVisible(true);
 				}
 			}
-		});
-		
-            //////////////
+		});	
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setPreferredSize(new Dimension(0, 30));
 		inforWindow.setJMenuBar(menuBar);
@@ -353,6 +347,5 @@ public class Ellites_Main {
 				regPane.setVisible(false);
 			}
 		});
-		
 	}
 }
